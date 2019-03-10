@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.sda.Main</mainClass>
+                            <mainClass>pl.sda.OpenWeather_RZ.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

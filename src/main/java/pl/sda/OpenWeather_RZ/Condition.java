@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Weather {
+public class Condition {
 
-    private Location location;
-    private Current current;
-
+    private String text;
+    private String icon;
+    private Integer code;
 
 }
