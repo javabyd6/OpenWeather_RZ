@@ -1,8 +1,8 @@
 package pl.sda.OpenWeather_RZ;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import pl.sda.OpenWeather_RZ.model.Weather;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 

@@ -1,8 +1,9 @@
-package pl.sda.OpenWeather_RZ;
+package pl.sda.OpenWeather_RZ.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.sda.OpenWeather_RZ.model.Condition;
 
 /**
  * @author Remigiusz Zudzin

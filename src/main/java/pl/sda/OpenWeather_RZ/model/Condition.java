@@ -1,4 +1,4 @@
-package pl.sda.OpenWeather_RZ;
+package pl.sda.OpenWeather_RZ.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
