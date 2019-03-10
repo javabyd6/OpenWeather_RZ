@@ -1,22 +1,26 @@
 package pl.sda.OpenWeather_RZ;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import pl.sda.OpenWeather_RZ.Service.WeatherService;
 import pl.sda.OpenWeather_RZ.model.Weather;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Scanner;
 
 /**
  * @author Remigiusz Zudzin
  */
 public class Main {
 
-    private static void readJsonWeatherDataSet(String location) {
-        ObjectMapper mapper = new ObjectMapper();
+    public static void checkWeather() throws IOException {
+        Scanner sc = new Scanner(System.in);
 
-        try {
-            Weather weather = mapper.readValue(new URL("http://api.apixu.com/v1/current.json?key=" +
-                    "75ef5138a56b445faf3120447191003&q=" + location), Weather.class);
+            System.out.println("Podaj nazwę miasta");
+            String location = sc.nextLine();
+            WeatherService weatherService = new WeatherService("http://api.apixu.com/v1/current.json", "75ef5138a56b445faf3120447191003");
+            Weather weather = weatherService.getCityWeather(location);
+
             System.out.println("Nazwa miejscowości: " + weather.getLocation().getName());
             System.out.println("Czas: " + weather.getLocation().getLocaltime());
             System.out.println("Wspolrzedne miejscowości: ");
@@ -24,26 +28,17 @@ public class Main {
             System.out.println("Szerokość geograficzna: " + weather.getLocation().getLon() + " stopni");
             System.out.println("Temperatura: " + weather.getCurrent().getTemp_c() + " stopni Celsjusza");
             System.out.println("Pogoda ogólnie: " + weather.getCurrent().getCondition().getText());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static void main(String[] args) {
 
-        readJsonWeatherDataSet("Bydgoszcz");
-        System.out.println();
-        readJsonWeatherDataSet("Lobzenica");
-        System.out.println();
-        readJsonWeatherDataSet("Paris");
-        System.out.println();
-        readJsonWeatherDataSet("Warszawa");
-        System.out.println();
-        readJsonWeatherDataSet("Lodz");
-        System.out.println();
-        readJsonWeatherDataSet("Gdansk");
-        System.out.println();
-        readJsonWeatherDataSet("New_York");
+        try {
+            checkWeather();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
