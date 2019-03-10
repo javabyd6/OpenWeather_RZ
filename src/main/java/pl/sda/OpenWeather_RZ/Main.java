@@ -17,7 +17,13 @@ public class Main {
             Weather weather = mapper.readValue(new File
                     ("http://api.apixu.com/v1/current.json?key=75ef5138a56b445faf3120447191003&q=" +
                             location), Weather.class);
-            System.out.println(weather);
+            System.out.println("Nazwa miejscowości: " + weather.getLocation().getName());
+            System.out.println("Czas: " + weather.getLocation().getLocaltime());
+            System.out.println("Wspolrzedne miejscowości: ");
+            System.out.println("Długość geograficzna: " + weather.getLocation().getLat());
+            System.out.println("Szerokość geograficzna: " + weather.getLocation().getLon());
+            System.out.println("Temperatura: " + weather.getCurrent().getTemp_c());
+            System.out.println("Zachmurzenie: " + weather.getCurrent().getCondition().getText());
         } catch (IOException e) {
             e.printStackTrace();
         }
